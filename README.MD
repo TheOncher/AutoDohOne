@@ -12,3 +12,11 @@ to fully automate the execution of the script without locking the terminal up.
 Download Base SendDohOne.py to run in your windows computer or server inside a "while True" loop.
 The best practice is to upload SendDohOneLinuxDeployment.py to the cloud so to have persistency and
 confidence in the succsesfull execution of the script without worry of poweroutage or restart.
+
+# Acquiring AUTH_TOKEN #
+Basic Preknowledge in BurpSuite is required
+Start BurpSuite in your browser, activate proxy to forward all data to burp, and add "https://one.prat.idf.il/" to the target scope for best practice,
+Start intercepting the requests, authenticate to the site "https://one.prat.idf.il/login" normally via the Microsoft Azure Authentication
+implemented by the IDF, and keep forwarding the requests manually until you see a "GET /api/account/login HTTP/2" with " Authorization: "
+data inside the request, it should be under the request headers.
+This " Authorization " request should be the second one but check all of them any way to besure.
