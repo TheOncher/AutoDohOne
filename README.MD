@@ -5,7 +5,7 @@ The best practice is to use Oracle Cloud, open up an account and deploy an alway
 Remember, Oracle Cloud Always Free VM's are ALWAYS FREE and the entire deployment of this Automation should never cost a penny.
 Follow their guides to set up a budget of 1 dollar just to be sure, either way, safe practice is best practice.
 
-# Info #
+# Persistency #
 This is a script to help you automated the irritating task of remembering to fill DohOne everyday.
 Upload SendDohOneLinuxDeployment.py to your linux machine and add an appropriate cron tab
 to fully automate the execution of the script without locking the terminal up.
