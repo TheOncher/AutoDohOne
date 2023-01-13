@@ -20,3 +20,4 @@ Start intercepting the requests, authenticate to the site "https://one.prat.idf.
 implemented by the IDF, and keep forwarding the requests manually until you see a "GET /api/account/login HTTP/2" with " Authorization: "
 data inside the request, it should be under the request headers.
 This " Authorization " request should be the second one but check all of them any way to besure.
+Remember to get a new AUTH_TOKEN every 60 days max, preferably less than that.
