@@ -20,4 +20,14 @@ Start intercepting the requests, authenticate to the site "https://one.prat.idf.
 implemented by the IDF, and keep forwarding the requests manually until you see a "GET /api/account/login HTTP/2" with " Authorization: "
 data inside the request, it should be under the request headers.
 This " Authorization " request should be the second one but check all of them any way to besure.
-Remember to get a new AUTH_TOKEN every 60 days max, preferably less than that.
+Remember to get a new AUTH_TOKEN every 60 days MAX! preferably less than that.
+
+# The Script #
+This python script uses the IDF API's to send doh one automatically, you can loop it or make a scheduled task that will run it for you.
+It will look at all the empty days you didn't fill yourself and fill them for you with "Present At Base", the default choise for most people.
+The script will not override a manual submit, so if you take a vacation or want to fill something different than "Present",
+just change the doh yourself normally via the app or website for the specified day.
+The script will not run over a manual submit, but it will refill an empty sumbit, so if you delete one, the next time the script executes,
+it will fill it with "Present At Base" or anything else you set it up with.
+TL:DR - The script auto fills with "Present" for the whole week, and will not run over a manual submit if you choose to take a vacation,
+It will refill a day if you delete one and leave it empty.
