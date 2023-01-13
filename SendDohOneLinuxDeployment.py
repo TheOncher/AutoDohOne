@@ -2,7 +2,7 @@
 # Add Personal AUTH_TOKEN to Line 28
 # Replace "tee -a /opt/AutoDohOne/log" in line 95 to whatever log file you want
 # Besure to add crontab to you linux distro with the correct path to script
-# Example: " 0 0 * * * python3 /opt/AutoDohOne/SendDohOne.py "
+# Example: " 0 0 * * * python3 /opt/AutoDohOne/SendDohOneLinuxDeployment.py "
 # The script will run every day at midnight
 
 # Imports
