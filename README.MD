@@ -29,5 +29,6 @@ The script will not override a manual submit, so if you take a vacation or want 
 just change the doh yourself normally via the app or website for the specified day.
 The script will not run over a manual submit, but it will refill an empty sumbit, so if you delete one, the next time the script executes,
 it will fill it with "Present At Base" or anything else you set it up with.
+
 TL:DR - The script auto fills with "Present" for the whole week, and will not run over a manual submit if you choose to take a vacation,
 It will refill a day if you delete one and leave it empty.
