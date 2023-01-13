@@ -1,3 +1,8 @@
+# Prerequisites
+# Add Personal AUTH_TOKEN to Line 25
+# Feel free to initiate the script in a While True loop and leave terminal open
+# Run in windows terminal or powershell: " while ($True) { python3 ./SendDohOne.py } "
+
 # Imports
 import requests as req
 import datetime
@@ -18,8 +23,6 @@ CONTENT_TYPE_MULTIPART = r"multipart/form-data; boundary=----WebKitFormBoundaryY
 CONTENT_TYPE_APPLICATION = r"application/json;charset=UTF-8"
 DOH_DATA = "\r\n------WebKitFormBoundaryYYzAwUiDj80Dh1q1\r\nContent-Disposition: form-data; name=\"MainCode\"\r\n\r\n01\r\n------WebKitFormBoundaryYYzAwUiDj80Dh1q1\r\nContent-Disposition: form-data; name=\"SecondaryCode\"\r\n\r\n01\r\n------WebKitFormBoundaryYYzAwUiDj80Dh1q1\r\nContent-Disposition: form-data; name=\"Note\"\r\n\r\n\r\n------WebKitFormBoundaryYYzAwUiDj80Dh1q1\r\nContent-Disposition: form-data; name=\"FutureReportDate\"\r\n\r\n{---}\r\n------WebKitFormBoundaryYYzAwUiDj80Dh1q1--\r\n"
 # AUTH_KEY = "INSERT YOUR AUTH KEY HERE"
-# Used for Repl.it, can be ignored
-# AUTH_KEY = os.environ['AUTH_TOKEN']
 
 
 def RequestAppCookie(AUTH_KEY):
