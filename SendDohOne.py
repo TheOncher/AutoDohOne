@@ -6,7 +6,6 @@ import json
 import os
 
 # Constants
-
 TEXT_COLOR_RED = "\033[31m"
 TEXT_COLOR_GREEN = "\033[32m"
 TEXT_COLOR_BLUE = "\033[34m"
@@ -50,10 +49,10 @@ def MicrosoftGenAuthKey():
 # Retrieve The Auth Key from The Json Database
 # Usage: MicrosoftGetAuthKey(123456789)
 # Returns:
-# vJsonProfiles[vID][AuthKey] => Returns the Microsoft Authentication Key for The Specified vID
-# False => if File/Profile/AuthKey Doesnt Exist, or if Fails openning the File
+# vJsonProfiles[vID][AuthKey]   => Returns the Microsoft Authentication Key for The Specified vID
+# False                         => if File/Profile/AuthKey Doesnt Exist, or if Fails openning the File
 # Parameters:
-# vID => the Profile ID Number
+# vID                           => the Profile ID Number
 def MicrosoftGetAuthKey(vID):
         # Converting Parameters to Correct Type
     vID = str(vID)
@@ -71,11 +70,11 @@ def MicrosoftGetAuthKey(vID):
 # Set The AuthKey for existing Profile in the Json Database
 # Usage: MicrosoftSetAuthKey(123456789, <AuthenticationKey>)
 # Returns:
-# True => if Set AuthKey Successfully
-# False => if Failed Setting AuthKey
+# True          => if Set AuthKey Successfully
+# False         => if Failed Setting AuthKey
 # Parameters:
-# vID => the Profile ID Number
-# vAuthKey => Authentication Key for Specified Profile ID
+# vID           => the Profile ID Number
+# vAuthKey      => Authentication Key for Specified Profile ID
 def MicrosoftSetAuthKey(vID, vAuthKey):
     # Converting Parameters to Correct Type
     vID = str(vID); vAuthKey = str(vAuthKey)
@@ -89,9 +88,9 @@ def MicrosoftSetAuthKey(vID, vAuthKey):
 # Check if the Json Database exists
 # Usage: JsonIsExist()
 # Return:
-# True => if Exists
-# False => if doesnt Exist
-# Parameters: N/A
+# True          => if Exists
+# False         => if doesnt Exist
+# Parameters:   N/A
 def JsonIsExist():
     if os.path.exists(f"{PYTHON_SCRIPT_ROOT}//{JSON_DATABASE_NAME}"):
         return True
@@ -100,10 +99,10 @@ def JsonIsExist():
 # Creates a new Json Database
 # Usage: JsonCreateFile(Force = True)
 # Returns:
-# True => if Created File
-# False => if didnt Create File
+# True                      => if Created File
+# False                     => if didnt Create File
 # Parameters:
-# vForce(Default = False) => Overwrite Existing File
+# vForce(Default = False)   => Overwrite Existing File
 def JsonCreateFile(vForce = False):
     # Skip Creation if File Exist and Overwridden is not Requested
     if ((vForce != True) and JsonIsExist()):
@@ -120,10 +119,10 @@ def JsonCreateFile(vForce = False):
 # Retrieve a Profile from the Json Database
 # Usage: JsonGetProfile(123456789)
 # Returns:
-# vJsonProfiles => Returns Specified ID Json Profile as dictionary if succeeded
-# False => if Requested Key doesnt exist or if Fails
+# vJsonProfiles     => Returns Specified ID Json Profile as dictionary if succeeded
+# False             => if Requested Key doesnt exist or if Fails
 # Parameters:
-# vID => the Profile ID Number
+# vID               => the Profile ID Number
 def JsonGetProfile(vID):
     # Converting Parameters to Correct Type
     vID = str(vID)
@@ -141,10 +140,9 @@ def JsonGetProfile(vID):
 # Retrieve all Profiles from the Json Database
 # Usage: JsonGetAllProfiles()
 # Returns:
-# vJsonProfiles => Returns Specified ID Json Profile as dictionary if succeeded
-# False => if Requested Key doesnt exist or if Fails
-# Parameters:
-# N/A
+# vJsonProfiles     => Returns Specified ID Json Profile as dictionary if succeeded
+# False             => if Requested Key doesnt exist or if Fails
+# Parameters:       N/A
 def JsonGetAllProfiles():
     try:
         # Retrieve Specified Profile Information
@@ -189,10 +187,10 @@ def JsonSetProfile(vID, vKey, vValue, vChangingDays = False):
 # Create New Profile in Json Database
 # Usage: JsonNewProfile(123456789)
 # Returns:
-# True => if Succeeded at Adding Blank Profile to Json Database
-# False => if Succeeded at Adding Blank Profile to Json Database or Errors opening the File
+# True          => if Succeeded at Adding Blank Profile to Json Database
+# False         => if Succeeded at Adding Blank Profile to Json Database or Errors opening the File
 # Parameters:
-# vID => the Profile ID Number
+# vID           => the Profile ID Number
 def JsonNewProfile(vID, vName):
     # Converting Parameters to Correct Type
     vID = str(vID); vName = str(vName)
@@ -222,10 +220,10 @@ def JsonNewProfile(vID, vName):
 # Delete a Profile from The Json Database
 # Usage: JsonDeleteProfile(123456789)
 # Returns:
-# True => if Succeeded at Deleting Profile from Json Database
-# False => if Failed at Deleting Profile from Json Database or Profile Didnt Exist
+# True          => if Succeeded at Deleting Profile from Json Database
+# False         => if Failed at Deleting Profile from Json Database or Profile Didnt Exist
 # Parameters:
-# vID => the Profile ID Number
+# vID           => the Profile ID Number
 def JsonDeleteProfile(vID):
     # Converting Parameters to Correct Type
     vID = str(vID)
@@ -253,10 +251,10 @@ def JsonDeleteProfile(vID):
 # Generate a Cookie to DohOne (prat.idf.il) Website
 # Usage: DohOneGenCookie(123456789)
 # Returns:
-# vDohOneCookieData => Returns The Actual DohOne Cookie Data
-# False => if Didnt Retrieve The Desired Cookie for DohOne, or if Failed
+# vDohOneCookieData     => Returns The Actual DohOne Cookie Data
+# False                 => if Didnt Retrieve The Desired Cookie for DohOne, or if Failed
 # Parameters:
-# vID => the Profile ID Number
+# vID                   => the Profile ID Number
 def DohOneGenCookie(vID):
     # Converting Parameters to Correct Type
     vID = str(vID)
@@ -280,10 +278,10 @@ def DohOneGenCookie(vID):
 # Send DohOne Report Submission
 # Usage: DohOneSendFutureReport(123456789)
 # Returns:
-# True => if Function Executed Successfully
-# False => if Something Broke
+# True          => if Function Executed Successfully
+# False         => if Something Broke
 # Parameters:
-# vID => the Profile ID Number
+# vID           => the Profile ID Number
 def DohOneSendFutureReport(vID):
     # Converting Parameters to Correct Type
     vID = str(vID)
@@ -340,10 +338,10 @@ def DohOneSendFutureReport(vID):
 # Retrieve DohOne Future Reported Data
 # Usage: DohOneGetFutureReports(123456789)
 # Returns:
-# vDohOneFutureDays => Returns DohOne (Submitted Only) Futute Reports as an Array
-# False => if Didnt Retrieve Future Reports
+# vDohOneFutureDays     => Returns DohOne (Submitted Only) Futute Reports as an Array
+# False                 => if Didnt Retrieve Future Reports
 # Parameters:
-# vID => the Profile ID Number
+# vID                   => the Profile ID Number
 def DohOneGetFutureReports(vID):
     # Converting Parameters to Correct Type
     vID = str(vID)
@@ -369,10 +367,10 @@ def DohOneGetFutureReports(vID):
 # Retrieve DohOne Future Non Reported Days, Days Without Submission
 # Usage: DohOneGetFutureEmptyReports( DohOneGetFutureReports(123456789) )
 # Returns:
-# vEmptyDays => Returns DohOne Empty (Non Submitted) Days for the Next 7 Days
-# False => if Shahar changes what their APIs Return and parsing Fails
+# vEmptyDays            => Returns DohOne Empty (Non Submitted) Days for the Next 7 Days
+# False                 => if Shahar changes what their APIs Return and parsing Fails
 # Parameters:
-# vDohOneFutureDays => All Reportd Future Days for the Next 7 Days, Returned From the DohOneGetFutureReports() Function
+# vDohOneFutureDays     => All Reportd Future Days for the Next 7 Days, Returned From the DohOneGetFutureReports() Function
 def DohOneGetFutureEmptyReports(vDohOneFutureDays):
     try:
         # Creating a list of all days from Tommorow to Sam Day Next Week (Today + 7)
@@ -407,10 +405,10 @@ def DohOneGetFutureEmptyReports(vDohOneFutureDays):
 # Retrieve the Submission Options for the Specified Profile
 # Usage: DohOneGetSubmissionOptions([DohOne Cookie]) 
 # Returns:
-# vDohOneSubmissionOptions => Returns The Submission Options For DohOne
-# False => if Failed to Request one.prat.idf.il
+# vDohOneSubmissionOptions  => Returns The Submission Options For DohOne
+# False                     => if Failed to Request one.prat.idf.il
 # Parameters:
-# vDohOneCookie => the DohOne Cookie generated by DohOneGenCookie()
+# vDohOneCookie             => the DohOne Cookie generated by DohOneGenCookie()
 def DohOneGetSubmissionOptions(vDohOneCookie):
     try:
         vDohOneSubmissionOptions = req.get(URL_ATTENDANCE_OPTIONS, headers={"Host": URL_HOST, "Referer": REFERER_HP,"User-Agent": USER_AGENT}, cookies={"AppCookie": vDohOneCookie})
@@ -422,10 +420,10 @@ def DohOneGetSubmissionOptions(vDohOneCookie):
 # Format the Output of the DohOneGetSubmissionOptions() Function and Print all Options
 # Usage: DohOneFormatSubmissionOptions( DohOneGetSubmissionOptions([DohOne Cookie]) )
 # Returns:
-# {vPrimaryOptionCode}-{vSecondaryOptionCode} => Returns The Choosen Option Codes for Submission Seperated by "-"
-# False => if Failed Somehoe to Parse The Text
+# {vPrimaryOptionCode}-{vSecondaryOptionCode}   => Returns The Choosen Option Codes for Submission Seperated by "-"
+# False                                         => if Failed Somehoe to Parse The Text
 # Parameters:
-# vDohOneSubmissionOptions => the DohOne Submission Options generated by DohOneGetSubmissionOptions()
+# vDohOneSubmissionOptions                      => the DohOne Submission Options generated by DohOneGetSubmissionOptions()
 def DohOneFormatSubmissionOptions(vDohOneSubmissionOptions):
     try:
         # Print All Primary Options
@@ -453,10 +451,10 @@ def DohOneFormatSubmissionOptions(vDohOneSubmissionOptions):
 # Usage: DohOneGetDefaultSubmissionOption(123456789, 7)
 # Returns:
 # SubmissionOption of DayNumber => Returns The SubmissionOption of the Specified Day Of Week
-# False => if Failed to Get Profile Data
+# False                         => if Failed to Get Profile Data
 # Parameters:
-# vID => the Profile ID Number
-# vDayNumber => Day Of Week, e.g: 1 = Sunday, 2 = Monday, 7 = Saturday
+# vID                           => the Profile ID Number
+# vDayNumber                    => Day Of Week, e.g: 1 = Sunday, 2 = Monday, 7 = Saturday
 def DohOneGetDefaultSubmissionOption(vID, vDayNumber):
     # Converting Parameters to Correct Type
     vID = str(vID); vDayNumber = str(vDayNumber)
@@ -471,12 +469,12 @@ def DohOneGetDefaultSubmissionOption(vID, vDayNumber):
 # Set The Default Submission for each Day
 # Usage: DohOneSetDefaultSubmissionOption(123456789, 1, ("01-02" or DohOneFormatSubmissionOptions()))
 # Returns:
-# True => if Function Succeeded and Default Submission Option Changed
-# False => if Function Failed and Default Submission Option Didnt Changed
+# True                  => if Function Succeeded and Default Submission Option Changed
+# False                 => if Function Failed and Default Submission Option Didnt Changed
 # Parameters:
-# vID => the Profile ID Number
-# vDayNumber => Day Of Week, e.g: 1 = Sunday, 2 = Monday, 7 = Saturday
-# vSubmissionOption => The Submission Option, e.g: 01-02 or 02-05
+# vID                   => the Profile ID Number
+# vDayNumber            => Day Of Week, e.g: 1 = Sunday, 2 = Monday, 7 = Saturday
+# vSubmissionOption     => The Submission Option, e.g: 01-02 or 02-05
 def DohOneSetDefaultSubmissionOption(vID, vDayNumber, vSubmissionOption):
     # Converting Parameters to Correct Type
     vID = str(vID); vDayNumber = str(vDayNumber); vSubmissionOption = str(vSubmissionOption)
@@ -536,7 +534,10 @@ def main():
 
     # Start Main Script Functionality
 
+    # ---------------------------------- #
+
     # Token Functions
+
     if vArgs.GenerateAuthToken:
         MicrosoftGenAuthKey()
 
@@ -566,6 +567,7 @@ def main():
     # ---------------------------------- #
 
     # Profile Functions
+    
     if vArgs.CreateDatabase:
         # Create a New Database
         if (JsonCreateFile(vForce=vArgs.Force)):
