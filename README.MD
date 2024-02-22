@@ -9,7 +9,8 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/TheOncher/AutoDohOne.svg)](https://github.com/TheOncher/AutoDohOne)
 [![stars](https://img.shields.io/github/stars/TheOncher/AutoDohOne.svg?style=badge)](https://github.com/TheOncher/AutoDohOne/stargazers)
 [![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![last commit](https://img.shields.io/github/last-commit/TheOncher/AutoDohOne.svg)](https://github.com/TheOncher/AutoDohOne/commits/main)
+[![last commit](https://img.shields.io/github/last-commit/TheOncher/AutoDohOne.svg)](https://github.com/TheOncher/AutoDohOne/commits/main)  
+
 I Started this project because I would never remember to fill my DohOne on time,  
 I'm sure we can all relate...  
 The purpose of this tool is to automate this forgetable task brought upon us by "Mash'an" and "Aka".  
