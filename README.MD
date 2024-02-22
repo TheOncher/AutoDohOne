@@ -1,38 +1,52 @@
-# Important
+<div align="center">
+  <img src="./logo.png" width="250px" alt="AutoDohOne Logo" title="AutoDohOne Logo">
+</div>
 
-The IDF only accept API requests and any other form of access to its sites from israeli IP's
-Besure to ONLY use cloud servers based in israel, Oracle have servers in jerusalem.
-The best practice is to use Oracle Cloud, open up an account and deploy an always free linux VM instance,
-Remember, Oracle Cloud Always Free VM's are ALWAYS FREE and the entire deployment of this Automation should never cost a penny.
-Follow their guides to set up a budget of 1 dollar just to be sure, either way, safe practice is best practice.
+# AutoDohOne
 
-# Persistency
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/TheOncher/AutoDohOne/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/TheOncher/AutoDohOne/total.svg)](https://github.com/TheOncher/AutoDohOne/releases)
+[![GitHub repo size](https://img.shields.io/github/repo-size/TheOncher/AutoDohOne.svg)](https://github.com/TheOncher/AutoDohOne)
+[![stars](https://img.shields.io/github/stars/TheOncher/AutoDohOne.svg?style=badge)](https://github.com/TheOncher/AutoDohOne/stargazers)
+[![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![last commit](https://img.shields.io/github/last-commit/TheOncher/AutoDohOne.svg)](https://github.com/TheOncher/AutoDohOne/commits/main)
+I Started this project because I would never remember to fill my DohOne on time,  
+I'm sure we can all relate...  
+The purpose of this tool is to automate this forgetable task brought upon us by "Mash'an" and "Aka".  
+Feel free to use it as you wish, as a ready to go script for deploy and forget, as an import to your tool, or even just use the functions for something else completely.
 
-This is a script to help you automated the irritating task of remembering to fill DohOne everyday.
-Upload SendDohOneLinuxDeployment.py to your linux machine and add an appropriate cron tab
-to fully automate the execution of the script without locking the terminal up.
-Download Base SendDohOne.py to run in your windows computer or server inside a "while True" loop.
-The best practice is to upload SendDohOneLinuxDeployment.py to the cloud so to have persistency and
-confidence in the succsesfull execution of the script without worry of poweroutage or restart.
+# 🥱 TL:DR
+* Check [Wiki](https://github.com/TheOncher/AutoDohOne/wiki) For Deployement Instructions
+* The tool can auto report for you whatever you want for DohOne and do it indefinetly.  
+* It Can report different status for each day of the week, and work on an array of people simultaniesly with one cloud instance, with unique profiles for each one.  
+* The tool will not overwride a manual submit if you choose to take a vacation, or something similar.  
+* It will refill an empty day if you delete one and leave it empty.
 
-# Acquiring AUTH_TOKEN
 
-Basic Preknowledge in BurpSuite is required
-Start BurpSuite in your browser, activate proxy to forward all data to burp, and add "https://one.prat.idf.il/" to the target scope for best practice,
-Start intercepting the requests, authenticate to the site "https://one.prat.idf.il/login" normally via the Microsoft Azure Authentication
-implemented by the IDF, and keep forwarding the requests manually until you see a "GET /api/account/login HTTP/2" with " Authorization: "
-data inside the request, it should be under the request headers.
-This " Authorization " request should be the second one but check all of them any way to besure.
-Remember to get a new AUTH_TOKEN every 60 days MAX! preferably less than that.
+# 👨‍💻 Accomplishments:
+- [x] Ability To Send All Types Of Existing Reports
+- [x] Ability To Report Eachday Seperately, Including Friday and Saturday
+- [x] Ability To Report DohOne For More Than One Person Simultaneously
+- [x] Ability To Run As a CronTab or Scheduled Task On The Cloud
+- [ ] Ability To Pirately* Generate Microsoft Authentication Tokens For Any Account
+- [ ] Sync With Meditik To AutoFill "Gimelim" instead of "Present"
+- [ ] Sync With Vacation Flights to AutoFill "Vacation" instead of "Present"
+- [ ] Ascending into a PIP Module
+- [ ] Create an Android/iPhone App for the Betterment of Humanity
 
-# The Script
+\* It's Not Really Piracy, I just don't want for every single person that tries to use this tool to need to open a Microsoft Developer Account and connect his API tokens, So i bypass this requirement entirely in my code.
 
-This python script uses the IDF API's to send doh one automatically, you can loop it or make a scheduled task that will run it for you.
-It will look at all the empty days you didn't fill yourself and fill them for you with "Present At Base", the default choise for most people.
-The script will not override a manual submit, so if you take a vacation or want to fill something different than "Present",
-just change the doh yourself normally via the app or website for the specified day.
-The script will not run over a manual submit, but it will refill an empty sumbit, so if you delete one, the next time the script executes,
-it will fill it with "Present At Base" or anything else you set it up with.
+# ✌️ Getting Started:
 
-TL:DR - The script auto fills with "Present" for the whole week, and will not run over a manual submit if you choose to take a vacation,
-It will refill a day if you delete one and leave it empty.
+Please Check [AutoDohOne Wiki Page](https://github.com/TheOncher/AutoDohOne/wiki) For Deeper explanation about how to use the CLI, the Functions and Everything Else.  
+
+Oracle Cloud Always Free VM's on Jerusalem Servers are recommended for this but arent neccessery.   
+**Remember!** The best practice is to use the cloud to upload your own instance for AutoDohOne, and use either crontab or schedualed task,  
+> If You Dont Know What Those are please press `Ctrl +W' On Your Keyboard for explanation  
+
+
+
+# 🦚 License:
+
+This Project is The Intellectual Property of  BenShimon Technologies LLC.  
+This project is licensed under the MIT License.
