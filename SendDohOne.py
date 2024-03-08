@@ -505,7 +505,7 @@ def main():
     vArgumentParser.add_argument("--Force", action="store_true", help="Setting Force Mode For Functions")
 
     # Adding Token Functions
-    vArgumentParser.add_argument("--GenerateAuthToken",action="store_true", help=f"{TEXT_COLOR_BLUE}[Requires: ID, Pass]{TEXT_COLOR_RESET} Generate New AuthToken for The Specified ID and Password")
+    vArgumentParser.add_argument("--GenerateAuthToken",action="store_true", help=f"{TEXT_COLOR_BLUE}[Requires: ID, Pass | Optional: --SetAuthToken]{TEXT_COLOR_RESET} Generate New AuthToken for The Specified ID and Password")
     vArgumentParser.add_argument("--ShowAuthToken", action="store_true", help=f"{TEXT_COLOR_BLUE}[Requires: ID]{TEXT_COLOR_RESET} Retrieve AuthToken for The Specified ID")
     vArgumentParser.add_argument("--SetAuthToken",action="store_true", help=f"{TEXT_COLOR_BLUE}[Requires: ID, AuthKey]{TEXT_COLOR_RESET} Sets Given AuthKey for The Specified ID,\nCan Be Coupled Together with --GenerateAuthToken instead of Directly Giving AuthKey, in order to Generate New Key and Set in Database Automatically")
 
