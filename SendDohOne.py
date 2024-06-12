@@ -298,6 +298,9 @@ def DohOneSendFutureReport(vID):
 
         # Getting Current Day
         vToday = datetime.datetime.now()
+        # Getting All Future Empty Reports Dates
+        vEmptyDays = DohOneGetFutureEmptyReports(DohOneGetFutureReports(vID), ".")
+
         # Creating An Array with all Week Days for Next 7 Days and Their Respective Date
         vCurrentWeek = dict()
         for i in range(1,8):
@@ -306,12 +309,17 @@ def DohOneSendFutureReport(vID):
             vNextDayNumber = (vNextDay.weekday() + 2) % 7
             if vNextDayNumber == 0:
                 vNextDayNumber = 7
-            vCurrentWeek[str(vNextDayNumber)] = str(vNextDayDate)
+            # Adding Day to Array Only if it Needs to by Reported
+            if str(vNextDayDate) in vEmptyDays:
+                vCurrentWeek[str(vNextDayNumber)] = str(vNextDayDate)
 
         # Generating DohOne Cookie
         vDohOneCookie = DohOneGenCookie(vID)
-        # Looping Through All Days
-        for vDayNumber, vDayOption in vSubmissionDayDict.items():
+        # Looping Through All Empty Days
+        for vDayNumber, vDayDate in vCurrentWeek.items():
+
+            # Getting Submission Option For Specified Day
+            vDayOption = vSubmissionDayDict[vDayNumber]
             if vDayOption == "":
                 continue
             vOptionPrimary = str(vDayOption[:2])
@@ -321,7 +329,7 @@ def DohOneSendFutureReport(vID):
             vCurrentDohSubmissionData = DOH_SUBMISSION_DATA
             vCurrentDohSubmissionData = vCurrentDohSubmissionData.replace(r"{--A--}", vOptionPrimary)
             vCurrentDohSubmissionData = vCurrentDohSubmissionData.replace(r"{--B--}", vOptionSecondary)
-            vCurrentDohSubmissionData = vCurrentDohSubmissionData.replace(r"{--C--}", vCurrentWeek[str(vDayNumber)])
+            vCurrentDohSubmissionData = vCurrentDohSubmissionData.replace(r"{--C--}", vDayDate)
             # Sending Doh One Data
             try:
                 vSendDohOne = req.post(URL_ATTENDANCE_INSERT, headers={"Host": URL_HOST, "Referer": REFERER_SECONDARIES,"User-Agent": USER_AGENT, "Content-Type": CONTENT_TYPE_MULTIPART}, cookies={"AppCookie": vDohOneCookie}, data=vCurrentDohSubmissionData)
@@ -365,13 +373,14 @@ def DohOneGetFutureReports(vID):
         return False
 
 # Retrieve DohOne Future Non Reported Days, Days Without Submission
-# Usage: DohOneGetFutureEmptyReports( DohOneGetFutureReports(123456789) )
+# Usage: DohOneGetFutureEmptyReports( DohOneGetFutureReports(123456789), "-" )
 # Returns:
-# vEmptyDays            => Returns DohOne Empty (Non Submitted) Days for the Next 7 Days
-# False                 => if Shahar changes what their APIs Return and parsing Fails
+# vEmptyDays                    => Returns DohOne Empty (Non Submitted) Days for the Next 7 Days
+# False                         => if Shahar changes what their APIs Return and parsing Fails
 # Parameters:
-# vDohOneFutureDays     => All Reportd Future Days for the Next 7 Days, Returned From the DohOneGetFutureReports() Function
-def DohOneGetFutureEmptyReports(vDohOneFutureDays):
+# vDohOneFutureDays             => All Reportd Future Days for the Next 7 Days, Returned From the DohOneGetFutureReports() Function
+# vDohOneFutureDaysDelimiter    => Delimiter for The Date, Default: '-'
+def DohOneGetFutureEmptyReports(vDohOneFutureDays, vDohOneFutureDaysDelimiter = "-"):
     try:
         # Creating a list of all days from Tommorow to Sam Day Next Week (Today + 7)
         vToday = datetime.datetime.now()
@@ -393,7 +402,8 @@ def DohOneGetFutureEmptyReports(vDohOneFutureDays):
         vEmptyDays = list()
         for vDayOfWeek in vCurrentWeek:
             if vDayOfWeek not in vReportedDays:
-                vEmptyDays.append(vDayOfWeek)
+                # Replace "-" With Choosen Delimiter
+                vEmptyDays.append(vDayOfWeek.replace("-",vDohOneFutureDaysDelimiter))
         return vEmptyDays
     except:
         return False
@@ -685,8 +695,6 @@ def main():
             print(fr"{TEXT_COLOR_GREEN}Successfully Set {vArgs.ID} Option for Day {vArgs.ProfileKey} to {vArgs.ProfileValue}{TEXT_COLOR_RESET}")
         else:
             print(fr"{TEXT_COLOR_RED}Failed Setting {vArgs.ID} Option for Day {vArgs.ProfileKey} to {vArgs.ProfileValue}{TEXT_COLOR_RESET}")
-
-    
 
 # Calling Main
 if __name__ == "__main__":
